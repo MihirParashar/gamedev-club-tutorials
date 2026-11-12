@@ -1,7 +1,7 @@
 ---
 // Replaces Starlight's page title. On tutorial pages it also shows the
-// one-line description and a short table: time, what to do first, what you
-// need to know. All three come from the top of the tutorial's Markdown file.
+// one-line description and a short table: what you will learn, time, what to
+// do first, what you need to know. All four come from the top of the tutorial's Markdown file.
 import { getEntry } from 'astro:content';
 
 const { data } = Astro.locals.starlightRoute.entry;
@@ -12,8 +12,14 @@ const isTutorial = data.number !== undefined;
 <h1 id="_top">{data.title}</h1>
 {isTutorial && data.description && <p class="gdc-lead">{data.description}</p>}
 {
-	isTutorial && (data.time || first || data.needs) && (
+	isTutorial && (data.time || first || data.needs || data.teaches) && (
 		<dl class="gdc-facts">
+			{data.teaches && (
+				<div>
+					<dt>You will learn</dt>
+					<dd>{data.teaches}</dd>
+				</div>
+			)}
 			{data.time && (
 				<div>
 					<dt>Time</dt>

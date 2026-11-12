@@ -5,6 +5,7 @@ number: 3
 time: About 45 minutes
 first: rain-dodge
 needs: Everything in Rain Dodge. Step 3 introduces reading and writing a file.
+teaches: lives, restarting without closing the game, saving to a file
 ---
 
 ![The game-over screen showing "Game over! You lasted 14s" and "Best: 31s. Press R to play again"](../../assets/extend-rain-dodge/game-over.png)

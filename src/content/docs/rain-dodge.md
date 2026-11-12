@@ -5,6 +5,7 @@ number: 2
 time: About 60 minutes
 first: setup
 needs: Variables, functions, lists, if and while. Nothing past intro CS.
+teaches: the game loop, keyboard control, rectangles, collisions, text on screen
 ---
 
 ![The finished game: a ship at the bottom of a starfield, falling white drops, and a 23 second timer in the top left corner](../../assets/rain-dodge/finished.png)

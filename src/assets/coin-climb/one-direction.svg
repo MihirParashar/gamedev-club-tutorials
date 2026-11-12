@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="19">
+  <rect width="720" height="380" fill="#15132B"/>
+  <line x1="360" y1="30" x2="360" y2="350" stroke="#322F52" stroke-width="2"/>
+
+  <!-- both at once: the player ends up overlapping a corner -->
+  <text x="180" y="48" fill="#F4EFE1" text-anchor="middle" font-weight="700">Both at once</text>
+  <rect x="150" y="190" width="170" height="80" fill="#58548C"/>
+  <rect x="70" y="100" width="60" height="60" fill="none" stroke="#F4EFE1" stroke-width="2" stroke-dasharray="8 7"/>
+  <rect x="115" y="145" width="60" height="60" fill="#EB6E64"/>
+  <!-- push up? -->
+  <line x1="145" y1="138" x2="145" y2="104" stroke="#FFD23F" stroke-width="4"/>
+  <path d="M135 104 L145 86 L155 104 Z" fill="#FFD23F"/>
+  <!-- push left? -->
+  <line x1="108" y1="175" x2="74" y2="175" stroke="#FFD23F" stroke-width="4"/>
+  <path d="M74 165 L56 175 L74 185 Z" fill="#FFD23F"/>
+  <text x="196" y="130" fill="#FFD23F" font-weight="700">up or left?</text>
+  <text x="180" y="312" fill="#F4EFE1" text-anchor="middle">Moved across and down together.</text>
+  <text x="180" y="338" fill="#F4EFE1" text-anchor="middle">The code can't tell which way is out.</text>
+
+  <!-- one direction at a time -->
+  <text x="540" y="48" fill="#F4EFE1" text-anchor="middle" font-weight="700">One direction at a time</text>
+  <rect x="510" y="190" width="170" height="80" fill="#58548C"/>
+  <rect x="430" y="100" width="60" height="60" fill="none" stroke="#F4EFE1" stroke-width="2" stroke-dasharray="8 7"/>
+  <rect x="475" y="100" width="60" height="60" fill="none" stroke="#F4EFE1" stroke-width="2"/>
+  <rect x="475" y="130" width="60" height="60" fill="#EB6E64"/>
+  <text x="548" y="112" fill="#F4EFE1">1. across: clear</text>
+  <text x="548" y="150" fill="#FFD23F" font-weight="700">2. down: overlap,</text>
+  <text x="548" y="174" fill="#FFD23F" font-weight="700">so push up</text>
+  <text x="540" y="312" fill="#F4EFE1" text-anchor="middle">After a sideways move, push sideways.</text>
+  <text x="540" y="338" fill="#F4EFE1" text-anchor="middle">After a down move, push up.</text>
+</svg>

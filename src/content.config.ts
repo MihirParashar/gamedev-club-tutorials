@@ -17,6 +17,8 @@ export const collections = {
 				first: z.string().optional(),
 				// What the reader should already know.
 				needs: z.string().optional(),
+				// The new skills this tutorial teaches, as a short list in one line.
+				teaches: z.string().optional(),
 				// Caption under the homepage screenshot.
 				heroCaption: z.string().optional(),
 			}),
