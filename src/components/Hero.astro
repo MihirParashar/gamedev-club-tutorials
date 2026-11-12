@@ -1,0 +1,95 @@
+---
+// Replaces Starlight's homepage hero: left-aligned text, the screenshot at its
+// real 4:3 shape, and a caption under it. Content still comes from the `hero`
+// block at the top of src/content/docs/index.mdx.
+import { Image } from 'astro:assets';
+import { LinkButton } from '@astrojs/starlight/components';
+
+const { data } = Astro.locals.starlightRoute.entry;
+const { title = data.title, tagline, image, actions = [] } = data.hero || {};
+const file = image && 'file' in image ? image.file : undefined;
+---
+
+<div class="gdc-hero">
+	<div class="copy">
+		<h1 id="_top" data-page-title>{title}</h1>
+		{tagline && <p class="tagline">{tagline}</p>}
+		{
+			actions.length > 0 && (
+				<div class="actions">
+					{actions.map(({ link, text, variant }) => (
+						<LinkButton href={link} variant={variant}>
+							{text}
+						</LinkButton>
+					))}
+				</div>
+			)
+		}
+	</div>
+	{
+		file && (
+			<figure>
+				<Image src={file} alt={image?.alt || ''} width={640} loading="eager" />
+				{data.heroCaption && <figcaption>{data.heroCaption}</figcaption>}
+			</figure>
+		)
+	}
+</div>
+
+<style>
+	.gdc-hero {
+		display: grid;
+		grid-template-columns: 100%;
+		align-items: center;
+		gap: 2.5rem;
+		padding-block: 1.5rem 1rem;
+	}
+	.copy {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+	h1 {
+		font-size: clamp(2.125rem, 1.2rem + 3.2vw, 2.875rem);
+		line-height: 1.1;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+		color: var(--sl-color-white);
+		max-width: 14em;
+	}
+	.tagline {
+		font-size: var(--sl-text-lg);
+		line-height: 1.55;
+		color: var(--sl-color-white);
+		max-width: 31em;
+	}
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.75rem 1.75rem;
+	}
+	figure {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+	figure :global(img) {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 6px;
+		border: 1px solid var(--gdc-rule);
+	}
+	figcaption {
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+	}
+	@media (min-width: 50rem) {
+		.gdc-hero {
+			grid-template-columns: minmax(0, 11fr) minmax(0, 9fr);
+			gap: 4rem;
+			padding-block: 3.5rem 2.5rem;
+		}
+	}
+</style>

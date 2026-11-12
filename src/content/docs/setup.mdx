@@ -1,0 +1,166 @@
+---
+title: Set up Python and pygame
+description: Install Python and pygame, check that both work, and fix the errors that stopped people at the first meeting.
+number: 1
+time: About 20 minutes
+needs: Nothing. Step 1 shows you how to open a terminal.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+pygame is the library every tutorial here uses to open a window, draw pictures and read the keyboard. It doesn't come with Python, so you install it once.
+
+:::caution[Install pygame-ce, not pygame]
+There are two versions of the library. `pygame` is the original, and it has no ready-made download for the newest Python (3.14 and 3.15), which is the likely reason `pip install pygame` failed for several people at the first meeting. `pygame-ce` is the actively maintained version. It installs cleanly on Python 3.10 through 3.15, and your code still says `import pygame`.
+:::
+
+## 1. Open a terminal
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+Press the Windows key, type `powershell`, and press Enter. A window with a blinking cursor opens. That is the terminal.
+
+</TabItem>
+<TabItem label="Mac">
+
+Press Command and Space together, type `terminal`, and press Enter.
+
+</TabItem>
+</Tabs>
+
+## 2. Check for Python
+
+Type this and press Enter.
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+```powershell
+py --version
+```
+
+</TabItem>
+<TabItem label="Mac">
+
+```sh
+python3 --version
+```
+
+</TabItem>
+</Tabs>
+
+If it prints `Python 3.10` or any higher number, you already have what you need. Skip to step 4.
+
+If it prints an error, or a number lower than 3.10, do step 3.
+
+## 3. Install Python
+
+Go to [python.org/downloads](https://www.python.org/downloads/) and download the installer the page offers for your computer. Run it and accept the defaults.
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+If it asks whether to add Python to your PATH, say yes.
+
+When it finishes, **close the terminal and open a new one**. The old window doesn't know Python exists yet. Then run `py --version` again.
+
+</TabItem>
+<TabItem label="Mac">
+
+When it finishes, close the terminal and open a new one, then run `python3 --version` again.
+
+</TabItem>
+</Tabs>
+
+## 4. Install pygame
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+```powershell
+py -m pip install pygame-ce
+```
+
+</TabItem>
+<TabItem label="Mac">
+
+```sh
+python3 -m pip install pygame-ce
+```
+
+</TabItem>
+</Tabs>
+
+It downloads for a few seconds and ends with a line that starts `Successfully installed pygame-ce`.
+
+## 5. Check that it works
+
+pygame comes with a small example game. Run it.
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+```powershell
+py -m pygame.examples.aliens
+```
+
+</TabItem>
+<TabItem label="Mac">
+
+```sh
+python3 -m pygame.examples.aliens
+```
+
+</TabItem>
+</Tabs>
+
+:::tip[Checkpoint]
+A game window opens with a car at the bottom and aliens flying across the top. The arrow keys move you and Space shoots. Close the window when you've seen enough.
+
+If that happened, you're set up. For the rest of these tutorials, remember which command worked for you: `py` on Windows, `python3` on a Mac.
+
+| If you see | Do this |
+| --- | --- |
+| `py is not recognized` or `command not found: python3` | Python isn't installed, or the terminal was open while you installed it. Close the terminal, open a new one and try again. If it still fails, redo step 3. |
+| You typed `python` and the Microsoft Store opened | Close the Store. On Windows, use `py`, not `python`. |
+| A dialog asks to install "command line developer tools" (Mac) | Click Cancel and do step 3. The Python that comes with those tools is too old. |
+| `Failed building wheel for pygame` or a long red wall of text mentioning `wheel` | You installed `pygame` and not `pygame-ce`. Run the step 4 command again, typed exactly as shown. |
+| `No module named pygame` | The install in step 4 didn't finish, or it went to a different copy of Python. Run step 4 again with the same command word (`py` or `python3`) you use to run things. |
+| `No module named pip` | Run `py -m ensurepip` (Mac: `python3 -m ensurepip`), then run step 4 again. |
+| `externally-managed-environment` (Mac) | Your `python3` belongs to Homebrew or the system. Install Python from python.org as in step 3 and open a new terminal. |
+| You installed `pygame` earlier, before reading this page | The two versions can't be installed together. Remove both with `py -m pip uninstall -y pygame pygame-ce` (Mac: `python3 -m pip uninstall -y pygame pygame-ce`), then run step 4 again. |
+:::
+
+## An editor
+
+You need somewhere to type code. Use whatever you used in intro CS. If you don't have anything, install [Visual Studio Code](https://code.visualstudio.com/), which is free and is what the screenshots in the club's slides use.
+
+Whichever editor you choose, these tutorials run games from the terminal, not from a Run button. That way everyone sees the same thing, and the errors in the checkpoints match what's on your screen.
+
+## Running a file from the terminal
+
+Every tutorial asks you to make a folder and run a file called `main.py` inside it. The terminal has to be "in" that folder first.
+
+<Tabs syncKey="os">
+<TabItem label="Windows">
+
+Open the folder in File Explorer, right-click an empty part of the window, and choose **Open in Terminal**. On Windows 10, hold Shift while you right-click and choose **Open PowerShell window here**. Then:
+
+```powershell
+py main.py
+```
+
+</TabItem>
+<TabItem label="Mac">
+
+Open Terminal, type `cd` and a space, drag the folder from Finder into the terminal window, and press Enter. Then:
+
+```sh
+python3 main.py
+```
+
+</TabItem>
+</Tabs>
+
+You'll do this for real in the next tutorial.

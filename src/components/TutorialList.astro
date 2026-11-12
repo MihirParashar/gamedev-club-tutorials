@@ -1,0 +1,112 @@
+---
+// The numbered list on the homepage. It builds itself from every page in
+// src/content/docs/ that has a `number` at the top, so a new tutorial shows up
+// here without anyone editing the homepage. Tutorials that aren't written yet
+// are passed in as `upcoming`.
+import { getCollection } from 'astro:content';
+
+interface Upcoming {
+	title: string;
+	description: string;
+	when: string;
+}
+interface Props {
+	upcoming?: Upcoming[];
+}
+
+const { upcoming = [] } = Astro.props;
+const tutorials = (await getCollection('docs'))
+	.filter((page) => page.data.number !== undefined)
+	.sort((a, b) => a.data.number! - b.data.number!);
+const lastNumber = tutorials.at(-1)?.data.number ?? 0;
+---
+
+<ol class="not-content">
+	{
+		tutorials.map((page) => (
+			<li>
+				<span class="number">{page.data.number}</span>
+				<div class="main">
+					<a href={`${page.id}/`}>{page.data.title}</a>
+					<p>{page.data.description}</p>
+				</div>
+				<span class="meta">{page.data.time}</span>
+			</li>
+		))
+	}
+	{
+		upcoming.map((item, index) => (
+			<li>
+				<span class="number">{lastNumber + index + 1}</span>
+				<div class="main">
+					<span class="title">{item.title}</span>
+					<p>{item.description}</p>
+				</div>
+				<span class="meta">{item.when}</span>
+			</li>
+		))
+	}
+</ol>
+
+<style>
+	ol {
+		list-style: none;
+		padding: 0;
+		margin-top: 1.25rem;
+		border-bottom: 1px solid var(--gdc-rule);
+	}
+	li {
+		display: grid;
+		grid-template-columns: 1.75rem minmax(0, 1fr);
+		align-items: baseline;
+		gap: 0.25rem 1.5rem;
+		padding: 1.25rem 0;
+		border-top: 1px solid var(--gdc-rule);
+	}
+	.number {
+		font-weight: 600;
+		color: var(--sl-color-gray-3);
+	}
+	.main {
+		min-width: 0;
+	}
+	.meta {
+		grid-column: 2;
+	}
+	@media (min-width: 50rem) {
+		li {
+			grid-template-columns: 1.75rem minmax(0, 1fr) 10.5rem;
+		}
+		.meta {
+			grid-column: 3;
+			text-align: right;
+		}
+	}
+	a,
+	.title {
+		font-size: var(--sl-text-xl);
+		font-weight: 600;
+		line-height: 1.4;
+		color: var(--sl-color-white);
+	}
+	.title {
+		font-weight: 500;
+		color: var(--sl-color-gray-3);
+	}
+	a {
+		text-decoration-color: var(--gdc-underline);
+		text-decoration-thickness: 2px;
+		text-underline-offset: 4px;
+	}
+	a:hover {
+		text-decoration-thickness: 3px;
+	}
+	p {
+		margin-top: 0.125rem;
+		color: var(--sl-color-gray-3);
+	}
+	.meta {
+		font-size: var(--sl-text-sm);
+		color: var(--sl-color-gray-3);
+	}
+</style>

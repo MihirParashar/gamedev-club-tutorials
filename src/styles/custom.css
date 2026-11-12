@@ -1,0 +1,297 @@
+/*
+  Theme for the IMSA Game Dev Club tutorials.
+
+  Colors come from the club's Rain Dodge slides: indigo #15132B, cream #F4EFE1
+  and gold #FFD23F. Gold is the only accent. Everything else is Starlight's
+  default layout with these variables swapped in.
+*/
+
+:root {
+	--sl-font: 'Atkinson Hyperlegible Next';
+	--sl-font-mono: 'Atkinson Hyperlegible Mono';
+
+	--sl-text-body: 1.0625rem;
+	--sl-text-code: 0.875rem;
+	--sl-text-h1: 2.75rem;
+	--sl-text-h2: 1.75rem;
+	--sl-text-h3: 1.3125rem;
+	--sl-text-h4: 1.125rem;
+	--sl-line-height: 1.65;
+	--sl-content-width: 44rem;
+	--sl-sidebar-width: 17.5rem;
+
+	--gdc-gold: #ffd23f;
+
+	/* Dark mode */
+	--sl-color-white: #f4efe1;
+	--sl-color-gray-1: #e6e1d4;
+	--sl-color-gray-2: #d6d2dc;
+	--sl-color-gray-3: #b9b5cc;
+	--sl-color-gray-4: #6a668c;
+	--sl-color-gray-5: #322f52;
+	--sl-color-gray-6: #211e40;
+	--sl-color-black: #15132b;
+
+	--sl-color-accent-low: #3a3211;
+	--sl-color-accent: #d9a900;
+	--sl-color-accent-high: #ffd23f;
+
+	--sl-color-bg-nav: var(--sl-color-black);
+	--sl-color-bg-sidebar: var(--sl-color-black);
+	--sl-color-hairline: var(--gdc-rule);
+	--sl-color-hairline-light: var(--gdc-rule);
+	--sl-color-hairline-shade: var(--gdc-rule);
+	--sl-color-bg-inline-code: rgb(244 239 225 / 0.12);
+
+	--gdc-panel: #211e40;
+	--gdc-rule: #322f52;
+	--gdc-underline: #ffd23f;
+	--gdc-code-bg: #0d0c1d;
+	--gdc-code-tab-bar: #15132b;
+	--gdc-code-border: #322f52;
+}
+
+:root[data-theme='light'] {
+	--sl-color-white: #15132b;
+	--sl-color-gray-1: #211e40;
+	--sl-color-gray-2: #2b2845;
+	--sl-color-gray-3: #5a5870;
+	--sl-color-gray-4: #8e8ba3;
+	--sl-color-gray-5: #cdc8b9;
+	--sl-color-gray-6: #ece7d9;
+	--sl-color-gray-7: #f4efe1;
+	--sl-color-black: #fbfaf6;
+
+	--sl-color-accent-low: #f6e7ad;
+	--sl-color-accent: #8a6a00;
+	--sl-color-accent-high: #4f3d00;
+
+	--sl-color-bg-inline-code: rgb(21 19 43 / 0.07);
+
+	--gdc-panel: #f4efe1;
+	--gdc-rule: #e2ded0;
+	--gdc-underline: #d9a900;
+	--gdc-code-bg: #15132b;
+	--gdc-code-tab-bar: #0d0c1d;
+	--gdc-code-border: #15132b;
+}
+
+/* Site name in the header: the pixel face from the club's slides. */
+.site-title {
+	font-family: 'Pixelify Sans', var(--sl-font), sans-serif;
+	font-weight: 500;
+	font-size: 1.4375rem;
+	color: var(--sl-color-white);
+}
+
+/* Headings */
+.sl-markdown-content :is(h2, h3, h4):not(:where(.not-content *)) {
+	font-weight: 700;
+}
+.sl-markdown-content h2:not(:where(.not-content *)) {
+	margin-top: 3.25rem;
+}
+.sl-markdown-content h3:not(:where(.not-content *)) {
+	margin-top: 2.25rem;
+}
+
+/* Links: text color with a gold underline, in both themes. */
+.sl-markdown-content a:not(:where(.not-content *)) {
+	color: var(--sl-color-white);
+	text-decoration-color: var(--gdc-underline);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 4px;
+}
+.sl-markdown-content a:hover:not(:where(.not-content *)) {
+	color: var(--sl-color-white);
+	text-decoration-thickness: 3px;
+}
+:focus-visible {
+	outline: 3px solid var(--gdc-gold);
+	outline-offset: 3px;
+}
+
+/* Buttons */
+.sl-link-button {
+	border-radius: 6px;
+	font-weight: 700;
+}
+.sl-link-button.primary,
+.sl-link-button.primary:hover {
+	background: var(--gdc-gold);
+	border-color: var(--gdc-gold);
+	color: #15132b;
+}
+.sl-link-button.minimal {
+	font-weight: 400;
+	text-decoration: underline;
+	text-decoration-color: var(--gdc-underline);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 4px;
+}
+
+/* Sidebar: the current page is a quiet panel, not a block of accent color. */
+.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current='page']:hover,
+.sidebar-content a[aria-current='page']:focus {
+	background: var(--gdc-panel);
+	color: var(--sl-color-white);
+	font-weight: 700;
+}
+.sidebar-content a {
+	border-radius: 6px;
+}
+
+/* Inline code */
+.sl-markdown-content code:not(:where(.not-content *)) {
+	border-radius: 3px;
+	padding: 0.0625rem 0.375rem;
+}
+
+/* Images in tutorials */
+.sl-markdown-content img:not(:where(.not-content *)) {
+	max-width: min(100%, 34rem);
+	height: auto;
+	border-radius: 6px;
+	border: 1px solid var(--gdc-rule);
+}
+.sl-markdown-content p:has(> img) + p > em:only-child {
+	display: block;
+	margin-top: -0.25rem;
+	font-style: normal;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-3);
+}
+
+/* Tables */
+.sl-markdown-content table:not(:where(.not-content *)) {
+	width: 100%;
+	display: table;
+}
+.sl-markdown-content :is(th, td):not(:where(.not-content *)) {
+	border-bottom: 1px solid var(--gdc-rule);
+	padding: 0.625rem 1rem 0.625rem 0;
+	vertical-align: top;
+}
+.sl-markdown-content th:not(:where(.not-content *)) {
+	font-weight: 700;
+	color: var(--sl-color-white);
+}
+.sl-markdown-content td:first-child:not(:where(.not-content *)) {
+	width: 40%;
+	min-width: 11.5rem;
+}
+/* Inline code that wraps keeps its rounded ends on both rows. */
+.sl-markdown-content code:not(:where(.not-content *)) {
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+.sl-markdown-content tbody tr:nth-child(odd):not(:where(.not-content *)) {
+	background: transparent;
+}
+
+/*
+  Checkpoints. Written in a tutorial as  :::tip[Checkpoint 1] ... :::
+  A filled panel with a gold marker shaped like one of the game's raindrops.
+*/
+.starlight-aside--tip {
+	--sl-color-asides-text-accent: var(--sl-color-white);
+	background: var(--gdc-panel);
+	border: 0;
+	border-radius: 6px;
+	padding: 1.5rem 1.75rem 1.625rem;
+	margin-top: 1.75rem;
+}
+.starlight-aside--tip .starlight-aside__icon {
+	display: none;
+}
+.starlight-aside--tip .starlight-aside__title {
+	gap: 0.75rem;
+	font-size: var(--sl-text-h3);
+	font-weight: 700;
+}
+.starlight-aside--tip .starlight-aside__title::before {
+	content: '';
+	flex: none;
+	width: 9px;
+	height: 18px;
+	background: var(--gdc-gold);
+	outline: 1px solid rgb(21 19 43 / 0.35);
+}
+.starlight-aside--tip .starlight-aside__content {
+	margin-top: 0.875rem;
+}
+.starlight-aside--tip img {
+	max-width: min(100%, 28rem);
+}
+/* Diagrams are drawn to fill the column. Screenshots stay smaller. */
+.sl-markdown-content img[src$='.svg']:not(:where(.not-content *)) {
+	max-width: 100%;
+	width: 100%;
+}
+
+/* Changed lines in code get a ~ where new lines get a +. */
+.expressive-code .ec-line.mark {
+	--tmLabel: '~';
+}
+.expressive-code .ec-line.mark .code::before {
+	color: #ffd23f;
+}
+
+/* One rule system at the top of a page: the facts table, not a full-width line. */
+.content-panel + .content-panel {
+	border-top: 0;
+}
+.starlight-aside--tip table {
+	margin-bottom: 0;
+}
+.starlight-aside--tip tbody tr:last-child td {
+	border-bottom: 0;
+}
+
+/* Notes and cautions keep Starlight's shape but lose the loud colors. */
+.starlight-aside--note,
+.starlight-aside--caution {
+	--sl-color-asides-text-accent: var(--sl-color-white);
+	--sl-color-asides-border: var(--gdc-rule);
+	background: transparent;
+	border: 1px solid var(--gdc-rule);
+	border-radius: 6px;
+	padding: 1.125rem 1.5rem;
+}
+
+/* Homepage */
+[data-has-hero] .sl-markdown-content h2:not(:where(.not-content *)) {
+	margin-top: 3rem;
+}
+.gdc-two-up {
+	margin-top: 3.5rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+	gap: 0 4rem;
+}
+.gdc-two-up > div > h2:not(:where(.not-content *)) {
+	margin-top: 0;
+	font-size: var(--sl-text-h3);
+}
+.gdc-two-up > div {
+	margin-top: 0 !important;
+	padding-bottom: 1.5rem;
+}
+
+/* Previous / next links at the bottom of a page */
+.pagination-links a {
+	border-radius: 6px;
+	border-color: var(--gdc-rule);
+	box-shadow: none;
+}
+.pagination-links a:hover {
+	border-color: var(--sl-color-gray-3);
+}
+.pagination-links a {
+	padding: 0.875rem 1rem;
+}
+.pagination-links .link-title {
+	font-size: var(--sl-text-lg);
+	font-weight: 600;
+}

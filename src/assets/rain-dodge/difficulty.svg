@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="720" height="380" font-family="'Segoe UI', Helvetica, Arial, sans-serif" font-size="18">
+  <rect width="720" height="380" fill="#15132B"/>
+  <text x="40" y="44" fill="#F4EFE1" font-weight="700" font-size="20">Average drops per second</text>
+
+  <!-- One bar per ten seconds of play. 12 px of height per drop per second, baseline at y=320. -->
+  <g fill="#FFD23F">
+    <path d="M56 320 V302.4 Q56 298.4 60 298.4 H100 Q104 298.4 104 302.4 V320 Z"/>
+    <path d="M150 320 V266.4 Q150 262.4 154 262.4 H194 Q198 262.4 198 266.4 V320 Z"/>
+    <path d="M244 320 V231.6 Q244 227.6 248 227.6 H288 Q292 227.6 292 231.6 V320 Z"/>
+    <path d="M338 320 V195.6 Q338 191.6 342 191.6 H382 Q386 191.6 386 195.6 V320 Z"/>
+    <path d="M432 320 V159.6 Q432 155.6 436 155.6 H476 Q480 155.6 480 159.6 V320 Z"/>
+    <path d="M526 320 V124.8 Q526 120.8 530 120.8 H570 Q574 120.8 574 124.8 V320 Z"/>
+    <path d="M620 320 V88.8 Q620 84.8 624 84.8 H664 Q668 84.8 668 88.8 V320 Z"/>
+  </g>
+  <line x1="40" y1="320.5" x2="680" y2="320.5" stroke="#6A668C" stroke-width="1"/>
+
+  <g fill="#F4EFE1" text-anchor="middle">
+    <text x="80" y="288.4">1.8</text>
+    <text x="174" y="252.4">4.8</text>
+    <text x="268" y="217.6">7.7</text>
+    <text x="362" y="181.6">10.7</text>
+    <text x="456" y="145.6">13.7</text>
+    <text x="550" y="110.8">16.6</text>
+    <text x="644" y="74.8">19.6</text>
+  </g>
+  <g fill="#B9B5CC" text-anchor="middle">
+    <text x="80" y="350">0s</text>
+    <text x="174" y="350">10s</text>
+    <text x="268" y="350">20s</text>
+    <text x="362" y="350">30s</text>
+    <text x="456" y="350">40s</text>
+    <text x="550" y="350">50s</text>
+    <text x="644" y="350">60s</text>
+  </g>
+</svg>

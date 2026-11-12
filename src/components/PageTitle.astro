@@ -1,0 +1,85 @@
+---
+// Replaces Starlight's page title. On tutorial pages it also shows the
+// one-line description and a short table: time, what to do first, what you
+// need to know. All three come from the top of the tutorial's Markdown file.
+import { getEntry } from 'astro:content';
+
+const { data } = Astro.locals.starlightRoute.entry;
+const first = data.first ? await getEntry('docs', data.first) : undefined;
+const isTutorial = data.number !== undefined;
+---
+
+<h1 id="_top">{data.title}</h1>
+{isTutorial && data.description && <p class="gdc-lead">{data.description}</p>}
+{
+	isTutorial && (data.time || first || data.needs) && (
+		<dl class="gdc-facts">
+			{data.time && (
+				<div>
+					<dt>Time</dt>
+					<dd>{data.time}</dd>
+				</div>
+			)}
+			{first && (
+				<div>
+					<dt>Do this first</dt>
+					<dd>
+						<a href={`../${first.id}/`}>{first.data.title}</a>
+					</dd>
+				</div>
+			)}
+			{data.needs && (
+				<div>
+					<dt>You need to know</dt>
+					<dd>{data.needs}</dd>
+				</div>
+			)}
+		</dl>
+	)
+}
+
+<style>
+	h1 {
+		margin-top: 1rem;
+		font-size: var(--sl-text-h1);
+		line-height: 1.1;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+		color: var(--sl-color-white);
+	}
+	.gdc-lead {
+		margin-top: 1.25rem;
+		font-size: var(--sl-text-lg);
+		line-height: 1.55;
+		color: var(--sl-color-white);
+		max-width: 38em;
+	}
+	.gdc-facts {
+		margin-top: 1.5rem;
+		border-bottom: 1px solid var(--gdc-rule);
+	}
+	.gdc-facts > div {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0 1.5rem;
+		padding: 0.625rem 0;
+		border-top: 1px solid var(--gdc-rule);
+	}
+	dt {
+		flex: 0 0 9.5rem;
+		color: var(--sl-color-gray-3);
+	}
+	dd {
+		flex: 1 1 16rem;
+		color: var(--sl-color-white);
+	}
+	a {
+		color: inherit;
+		text-decoration-color: var(--gdc-underline);
+		text-decoration-thickness: 2px;
+		text-underline-offset: 4px;
+	}
+	a:hover {
+		text-decoration-thickness: 3px;
+	}
+</style>

@@ -1,0 +1,51 @@
+---
+title: Tutorials for the IMSA Game Dev Club
+description: Step-by-step tutorials that take IMSA Game Dev Club members from installing Python to a game of their own.
+template: splash
+heroCaption: Rain Dodge, the game you build in tutorial 2.
+hero:
+  tagline: Start with the Python from intro CS and end with a game of your own. Each tutorial builds on the one before, so do them in order.
+  image:
+    file: ../../assets/rain-dodge/finished.png
+    alt: 'Rain Dodge: a small ship at the bottom of a starfield dodging falling white drops, with a 23 second timer in the corner'
+  actions:
+    - text: Start with setup
+      link: setup/
+      variant: primary
+---
+
+import TutorialList from '../../components/TutorialList.astro';
+
+## Tutorials
+
+<TutorialList
+	upcoming={[
+		{
+			title: 'Shoot Back',
+			description: 'Bullets, enemies that take hits, and sound.',
+			when: 'Coming in December',
+		},
+		{
+			title: 'Start your own game',
+			description: 'A starter template with a title screen and a game-over screen, ready to change.',
+			when: 'Coming in December',
+		},
+	]}
+/>
+
+<div class="gdc-two-up">
+<div>
+
+## Stuck?
+
+Every step ends with a checkpoint that lists the errors people hit there and how to fix each one. If yours isn't listed, bring your laptop to the next meeting.
+
+</div>
+<div>
+
+## Found a mistake?
+
+Every page has an **Edit page** link at the bottom. It opens the page on GitHub, and a board member reviews your fix. You don't need Git installed. [How to fix or add a tutorial](contributing/).
+
+</div>
+</div>
